@@ -85,7 +85,8 @@ export async function AboutPage() {
             </section>
           ) : (
             <section key={i} className="mb-10">
-              <div className="mx-auto flex max-w-[1140px] flex-col-reverse tab:flex-row tab:items-center">
+              {/* Photo above the text on phones, photo left on larger screens */}
+              <div className="mx-auto flex max-w-[1140px] flex-col tab:flex-row tab:items-center">
                 <FeatureImage feature={feature} side="left" index={i} />
                 <FeatureText feature={feature} side="right" index={i} />
               </div>
