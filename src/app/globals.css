@@ -1,0 +1,285 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Breakpoints mirror the original Elementor setup:
+ *   base   = mobile (<= 767px)
+ *   tab    = tablet (>= 768px)
+ *   desk   = desktop (>= 1025px)
+ * Extra ones used by specific widgets:
+ *   smoove = >= 769px  (scroll reveal is disabled below this width)
+ *   owl3   = >= 1170px (testimonial carousel shows 3 cards)
+ */
+@theme {
+  --breakpoint-*: initial;
+  --breakpoint-tab: 768px;
+  --breakpoint-smoove: 769px;
+  --breakpoint-desk: 1025px;
+  --breakpoint-owl3: 1170px;
+
+  --color-muted-text: #7c7c7c;
+
+  --ease-smoove: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-reveal: cubic-bezier(0.3, 0.58, 0.55, 1);
+  --ease-flip: cubic-bezier(0.5, 0.3, 0.3, 1);
+  --ease-caption: cubic-bezier(0.785, 0.135, 0.15, 0.86);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-public-sans), "Public Sans", sans-serif;
+  --font-heading: var(--font-urbanist), "Urbanist", sans-serif;
+  --font-mono: ui-monospace, monospace;
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+}
+
+/* Target palette: pure black / white with a single muted grey. */
+:root {
+  --background: #ffffff;
+  --foreground: #000000;
+  --card: #ffffff;
+  --card-foreground: #000000;
+  --popover: #ffffff;
+  --popover-foreground: #000000;
+  --primary: #000000;
+  --primary-foreground: #ffffff;
+  --secondary: #ffffff;
+  --secondary-foreground: #000000;
+  --muted: #f5f5f5;
+  --muted-foreground: #7c7c7c;
+  --accent: #f5f5f5;
+  --accent-foreground: #000000;
+  --destructive: #d63638;
+  --border: #e7e7e7;
+  --input: #000000;
+  --ring: #000000;
+  --radius: 15px;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    margin: 0;
+    background: #fff;
+    color: #000;
+    font-family: var(--font-sans);
+    font-size: 16px;
+    line-height: 1.6;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    margin: 0;
+  }
+  img {
+    max-width: 100%;
+  }
+  a {
+    color: inherit;
+    text-decoration: none;
+    transition:
+      color 0.2s linear,
+      background 0.1s linear;
+  }
+  abbr[title] {
+    text-decoration: underline dotted;
+    cursor: help;
+  }
+}
+
+/* Elementor "grow" hover animation used on pill buttons. */
+@utility anim-grow {
+  transition-property: transform;
+  transition-duration: 0.3s;
+  &:hover,
+  &:focus,
+  &:active {
+    transform: scale(1.1);
+  }
+}
+
+@layer components {
+  /* ---------- Pricing flip boxes ---------- */
+  .flip-box {
+    position: relative;
+    width: 100%;
+    transform: perspective(1000px);
+    transform-style: preserve-3d;
+  }
+  .flip-face {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+    transition: transform 0.6s var(--ease-flip);
+    z-index: 1;
+  }
+  .flip-face--front {
+    border-radius: 15px;
+    transform: rotateY(0deg);
+  }
+  .flip-face--back {
+    transform: rotateY(180deg);
+  }
+  .flip-box:hover .flip-face--front {
+    transform: rotateY(-180deg);
+  }
+  .flip-box:hover .flip-face--back {
+    transform: rotateY(0deg);
+  }
+  .flip-content {
+    position: relative;
+    top: 50%;
+    z-index: 2;
+    text-align: center;
+    transform-style: preserve-3d;
+    transition: transform 0.6s var(--ease-flip);
+  }
+  .flip-content--front {
+    padding: 40px;
+    transform: translateY(-50%) translateX(0) scale(1);
+  }
+  .flip-box:hover .flip-content--front {
+    transform: translateY(-50%) translateX(-650px) scale(0.88);
+  }
+  .flip-content--back {
+    padding: 20px;
+    transform: translateY(-50%) translateX(650px) translateZ(60px) scale(0.88);
+  }
+  @media (min-width: 961px) {
+    .flip-content--back {
+      padding: 40px;
+    }
+  }
+  .flip-box:hover .flip-content--back {
+    transform: translateY(-50%) translateX(0) translateZ(0) scale(1);
+  }
+
+  /* ---------- Portfolio cards ---------- */
+  .work-caption {
+    position: absolute;
+    left: 5%;
+    bottom: -60px;
+    width: 90%;
+    padding: 20px 35px;
+    background: #fff;
+    border-radius: 15px;
+    transform: translateY(0);
+    transition: all 850ms var(--ease-caption) 0ms;
+  }
+  @media (min-width: 768px) and (max-width: 960px) {
+    .work-caption {
+      left: 5px;
+      width: calc(100% - 20px);
+      padding: 20px 25px 15px;
+    }
+  }
+  .work-card:hover .work-caption {
+    transform: translateY(-80px);
+  }
+  .work-arrow {
+    position: absolute;
+    right: 25px;
+    top: 50%;
+    opacity: 0;
+    transform: translateY(-15px) perspective(1px) scale(0.2);
+    transition:
+      transform 0.3s var(--ease-caption) 200ms,
+      opacity 0.2s cubic-bezier(0, 1, 0.5, 1) 200ms;
+  }
+  .work-card:hover .work-arrow {
+    opacity: 1;
+    transform: translateY(-15px) scale(1) perspective(1px);
+  }
+}
+
+/* About: team photos shrink inward and zoom on hover (tilt is set from JS). */
+@layer components {
+  .team-card__img {
+    clip-path: inset(0);
+    transition: clip-path 0.8s var(--ease-smoove);
+  }
+  .team-card:hover .team-card__img {
+    clip-path: inset(15px);
+  }
+  .team-card__img img {
+    transition: transform 1000ms cubic-bezier(0.19, 1, 0.22, 1);
+  }
+  .team-card:hover .team-card__img img {
+    transform: scale(1.15);
+  }
+}
+
+/* Our Works: cards fade/scale back in after a filter change. */
+@keyframes works-in {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* In-page editor (/admin login): outlines on editable content. */
+[data-editing] [data-edit] {
+  cursor: text;
+  border-radius: 3px;
+  outline: 1px dashed transparent;
+  outline-offset: 3px;
+  transition: outline-color 0.15s;
+}
+[data-editing] [data-edit]:hover {
+  outline-color: rgb(59 130 246 / 0.7);
+}
+[data-editing] [data-edit]:focus {
+  outline: 2px solid rgb(59 130 246);
+  outline-offset: 3px;
+}
+[data-editing] [data-edit-image]:hover,
+[data-editing] [data-edit-photos]:hover {
+  outline: 2px solid rgb(59 130 246 / 0.8);
+  outline-offset: -2px;
+}
+/* Hidden buttons stay visible (faded) while editing, so they can be shown again. */
+[data-editing] [data-edit-hide][hidden] {
+  display: block !important;
+  opacity: 0.35;
+}
+/* Full-card link overlays let clicks reach the editable text underneath. */
+[data-editing] .edit-passthrough {
+  pointer-events: none;
+}

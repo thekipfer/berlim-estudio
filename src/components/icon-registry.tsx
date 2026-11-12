@@ -1,0 +1,60 @@
+import type { ComponentType } from "react";
+import {
+  BuildingIcon,
+  CalendarIcon,
+  CameraIcon,
+  DotsIcon,
+  FacebookIcon,
+  GiftIcon,
+  GlobeIcon,
+  GridIcon,
+  HangerIcon,
+  HeartOutlineIcon,
+  ImageIcon,
+  InstagramIcon,
+  LinkedInIcon,
+  MailIcon,
+  MapPinIcon,
+  PhoneIcon,
+  RingIcon,
+  SearchIcon,
+  SparklesIcon,
+  StarIcon,
+  SunIcon,
+  UserIcon,
+  UsersIcon,
+  VideoIcon,
+  type IconProps,
+} from "@/components/icons";
+
+/** Icons the editor can pick for form options and social links. Keys are stored in the content JSON. */
+export const iconRegistry: Record<string, { label: string; Icon: ComponentType<IconProps> }> = {
+  grid: { label: "Grade", Icon: GridIcon },
+  sun: { label: "Sol", Icon: SunIcon },
+  hanger: { label: "Cabide", Icon: HangerIcon },
+  ring: { label: "Anel", Icon: RingIcon },
+  heart: { label: "Coração", Icon: HeartOutlineIcon },
+  camera: { label: "Câmera", Icon: CameraIcon },
+  video: { label: "Vídeo", Icon: VideoIcon },
+  image: { label: "Foto", Icon: ImageIcon },
+  sparkles: { label: "Brilho", Icon: SparklesIcon },
+  star: { label: "Estrela", Icon: StarIcon },
+  gift: { label: "Presente", Icon: GiftIcon },
+  calendar: { label: "Calendário", Icon: CalendarIcon },
+  "map-pin": { label: "Local", Icon: MapPinIcon },
+  building: { label: "Estúdio", Icon: BuildingIcon },
+  globe: { label: "Mundo", Icon: GlobeIcon },
+  user: { label: "Pessoa", Icon: UserIcon },
+  users: { label: "Pessoas", Icon: UsersIcon },
+  mail: { label: "E-mail", Icon: MailIcon },
+  phone: { label: "Telefone", Icon: PhoneIcon },
+  search: { label: "Busca", Icon: SearchIcon },
+  facebook: { label: "Facebook", Icon: FacebookIcon },
+  instagram: { label: "Instagram", Icon: InstagramIcon },
+  linkedin: { label: "LinkedIn", Icon: LinkedInIcon },
+  dots: { label: "Outros", Icon: DotsIcon },
+};
+
+export const iconNames = Object.keys(iconRegistry);
+
+export const getIcon = (name: string) => (iconRegistry[name] ?? iconRegistry.dots).Icon;
