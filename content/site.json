@@ -49,6 +49,9 @@
       "/uploads/mwdr2bfg-18rae2.webp",
       "/uploads/mwdrqmv4-20mvmx.webp"
     ],
+    "slidesMobile": [
+      "/uploads/mwdzsgqh-gwh92w.webp"
+    ],
     "quote": "Fotografia e produção audiovisual para eventos corporativos, lançamentos de marcas, convenções, feiras e experiências empresariais.",
     "quoteHighlight": "empresariais.",
     "quoteCta": {
@@ -89,10 +92,10 @@
     },
     "testimonials": [
       {
-        "quote": "Stephen is truly an outstanding photographer (and wonderful person) with an almost mystical ability to capture the true nature of people and events. I'd recommend him to anyone!",
-        "name": "Peter Pan CEO",
-        "company": " - ThemeGoods",
-        "companyHref": "https://themegoods.com",
+        "quote": "Lindas demais as fotos! Você tem um dom incrível. Nas fotos e nos vídeos, consegue captar detalhes que fazem toda a diferença. Amamos o resultado! Gratidão pelo carinho e profissionalismo. Com certeza, teremos novos projetos juntos!",
+        "name": "Rúbia",
+        "company": " - Casinha de Brincar",
+        "companyHref": "",
         "avatar": "/images/testimonials/peter-pan.jpg"
       },
       {
@@ -176,33 +179,49 @@
         "icon": "dots"
       }
     ],
-    "locationLabel": "Location",
+    "locationLabel": "Onde será realizado o evento?",
     "locationAny": {
-      "label": "Any",
+      "label": "Balneário Camboriú / Itajaí",
       "icon": "map-pin"
     },
     "locations": [
       {
-        "label": "Photography Studio",
-        "icon": "camera"
+        "label": "Florianópolis",
+        "icon": "map-pin"
+      },
+      {
+        "label": "Joinville / Blumenau",
+        "icon": "map-pin"
+      },
+      {
+        "label": "Outra cidade (SC ou fora do estado)",
+        "icon": "dots"
       }
     ],
-    "employeeLabel": "Employee",
+    "employeeLabel": "Quando será o evento?",
     "employeeAny": {
-      "label": "Any",
-      "icon": "users"
+      "label": "Data já definida",
+      "icon": "calendar"
     },
     "employees": [
       {
-        "label": "Jonathan Doeer",
-        "icon": "user"
+        "label": "Nas próximas 2 semanas",
+        "icon": "calendar"
       },
       {
-        "label": "Jane Doe",
-        "icon": "user"
+        "label": "Nos próximos 30 dias",
+        "icon": "calendar"
+      },
+      {
+        "label": "Nos próximos 3 meses",
+        "icon": "calendar"
+      },
+      {
+        "label": "Ainda não temos uma data definida",
+        "icon": "dots"
       }
     ],
-    "submitLabel": "Next",
+    "submitLabel": "Próximo",
     "detailsNameLabel": "Nome",
     "detailsEmailLabel": "E-mail",
     "detailsPhoneLabel": "Telefone",

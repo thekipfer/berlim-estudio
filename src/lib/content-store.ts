@@ -39,17 +39,26 @@ function mergeContent<T>(defaults: T, stored: unknown): T {
   return out as T;
 }
 
-async function readStored(): Promise<unknown> {
+async function readLocal(): Promise<unknown> {
   try {
-    if (usesBlob()) {
-      const result = await get(CONTENT_PATH, { access: "public", useCache: false });
-      if (!result || result.statusCode !== 200) return null;
-      return JSON.parse(await new Response(result.stream).text());
-    }
     return JSON.parse(await fs.readFile(LOCAL_CONTENT_FILE, "utf8"));
   } catch {
-    return null; // nothing saved yet (or unreadable): use the defaults
+    return null;
   }
+}
+
+async function readStored(): Promise<unknown> {
+  if (usesBlob()) {
+    try {
+      const result = await get(CONTENT_PATH, { access: "public", useCache: false });
+      if (result?.statusCode === 200) return JSON.parse(await new Response(result.stream).text());
+    } catch {
+      // fall through to the committed file
+    }
+    // Blob just connected and still empty: keep serving the content committed in content/site.json
+    // (the first save from the editor then writes it to Blob).
+  }
+  return readLocal(); // null when nothing saved yet: use the defaults
 }
 
 /** Site content = defaults + saved edits. Cached per request. */

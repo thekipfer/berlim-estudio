@@ -114,7 +114,15 @@ export const sections: SectionDef[] = [
     group: "Home",
     title: "Slides do topo",
     description: "Fotos que passam em sequência no topo da home. Arraste a ordem com as setas.",
-    fields: [{ kind: "images", key: "home.slides", label: "Fotos dos slides", hint: "Fotos na horizontal, de preferência com 2000px de largura." }],
+    fields: [
+      { kind: "images", key: "home.slides", label: "Fotos dos slides (desktop)", hint: "Fotos na horizontal, de preferência com 2000px de largura." },
+      {
+        kind: "images",
+        key: "home.slidesMobile",
+        label: "Fotos para celular (opcional)",
+        hint: "Fotos na vertical (ex.: 1080×1920). Se houver fotos aqui, elas substituem as de cima no celular. Deixe vazio para usar as mesmas do desktop.",
+      },
+    ],
   },
   {
     id: "citacao",

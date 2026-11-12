@@ -30,6 +30,7 @@ export const defaultContent: SiteContent = {
 
   home: {
     slides: ["/images/hero/hero-1.jpg", "/images/hero/hero-2.jpg", "/images/hero/hero-3.jpg", "/images/hero/hero-4.jpg"],
+    slidesMobile: [],
     quote:
       "You don’t love someone for their looks, or their clothes or their fancy car, but because they sing a song only you can hear.",
     quoteHighlight: "you can hear.",

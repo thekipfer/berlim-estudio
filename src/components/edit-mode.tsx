@@ -388,7 +388,7 @@ export default function EditMode() {
             </div>
             <PhotoGrid
               value={(current(photos.path) as Photo[]) ?? []}
-              objects={photos.path !== "home.slides"}
+              objects={!photos.path.startsWith("home.slides")}
               onChange={(v) => setDraft((d) => ({ ...d, [photos.path]: v }))}
             />
             <p className="mt-3 text-xs text-neutral-400">Use as setas para mudar a ordem. As mudanças aparecem no site depois de salvar.</p>

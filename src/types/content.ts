@@ -115,6 +115,8 @@ export interface SiteContent {
   nav: { items: NavItem[]; contact: LinkItem };
   home: {
     slides: string[];
+    /** Optional photos for phones (vertical). When set, they replace `slides` below 768px. */
+    slidesMobile: string[];
     quote: string;
     /** Words of the quote that get the brush-stroke underline. */
     quoteHighlight: string;
