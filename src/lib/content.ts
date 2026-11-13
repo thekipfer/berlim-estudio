@@ -33,8 +33,8 @@ export const defaultContent: SiteContent = {
     slidesMobile: [],
     logos: [
       { src: "/images/logos/hangar-33.png", width: 1258, height: 612 },
-      { src: "/images/logos/lez-a-lez.jpg", width: 2362, height: 625 },
-      { src: "/images/logos/cassol.jpg", width: 849, height: 215 },
+      { src: "/images/logos/lez-a-lez.png", width: 2118, height: 560 },
+      { src: "/images/logos/cassol.png", width: 834, height: 202 },
       { src: "/images/logos/lunelli.png", width: 1801, height: 483 },
       { src: "/images/logos/duas-rodas.webp", width: 1665, height: 986 },
     ],

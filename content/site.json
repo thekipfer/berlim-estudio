@@ -63,14 +63,14 @@
         "height": 612
       },
       {
-        "src": "/images/logos/lez-a-lez.jpg",
-        "width": 2362,
-        "height": 625
+        "src": "/images/logos/lez-a-lez.png",
+        "width": 2118,
+        "height": 560
       },
       {
-        "src": "/images/logos/cassol.jpg",
-        "width": 849,
-        "height": 215
+        "src": "/images/logos/cassol.png",
+        "width": 834,
+        "height": 202
       },
       {
         "src": "/images/logos/lunelli.png",
@@ -79,8 +79,8 @@
       },
       {
         "src": "/images/logos/kingspan.png",
-        "width": 411,
-        "height": 205,
+        "width": 400,
+        "height": 197,
         "scale": 1.45
       },
       {
@@ -109,7 +109,8 @@
       {
         "title": "Vídeo",
         "price": "Vídeos institucionais e comerciais.",
-        "image": "/uploads/mwdsfsbc-wwcg80.webp"
+        "image": "/videos/casinha-poster.jpg",
+        "video": "/videos/casinha.mp4"
       }
     ],
     "serviceCta": {

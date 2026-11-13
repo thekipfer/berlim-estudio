@@ -25,6 +25,8 @@ export interface ServiceCard {
   title: string;
   price: string;
   image: string;
+  /** Optional muted looping video for the card front (MP4). `image` is its poster and the card back. */
+  video?: string;
 }
 
 export interface PortfolioItem {

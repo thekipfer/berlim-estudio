@@ -165,7 +165,13 @@ export const sections: SectionDef[] = [
         key: "home.serviceCards",
         label: "Cards",
         fields: [
-          { kind: "image", key: "image", label: "Foto" },
+          { kind: "image", key: "image", label: "Foto", hint: "Com vídeo, esta foto aparece enquanto ele carrega e no verso do card." },
+          {
+            kind: "text",
+            key: "video",
+            label: "Vídeo (opcional)",
+            hint: "Endereço de um MP4 na pasta do site, ex.: /videos/casinha.mp4. Toca mudo e em loop no lugar da foto.",
+          },
           { kind: "text", key: "title", label: "Título" },
           { kind: "text", key: "price", label: "Preço" },
         ],

@@ -11,7 +11,22 @@ function FlipCard({ card, cta, tracking, index }: { card: ServiceCard; cta: Link
     <div className="flip-box h-[400px] desk:h-[500px]" {...editImage(`${path}.image`)}>
       {/* Front */}
       <div className="flip-face flip-face--front">
-        <Image src={card.image} alt="" fill sizes="(min-width: 768px) 33vw, 100vw" className="object-cover" />
+        {card.video ? (
+          // Muted + playsInline lets phones autoplay; the poster shows until it starts (or if autoplay is blocked).
+          <video
+            src={card.video}
+            poster={card.image}
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            aria-hidden="true"
+            className="absolute inset-0 h-full w-full object-cover"
+          />
+        ) : (
+          <Image src={card.image} alt="" fill sizes="(min-width: 768px) 33vw, 100vw" className="object-cover" />
+        )}
         <div className="flip-content flip-content--front">
           <h2 className="font-heading text-[24px] leading-[1.6] font-semibold text-white tab:text-[18px] desk:text-[30px]" {...edit(`${path}.title`)}>
             {card.title}
