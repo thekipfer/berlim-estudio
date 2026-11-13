@@ -125,6 +125,21 @@ export const sections: SectionDef[] = [
     ],
   },
   {
+    id: "logos",
+    group: "Home",
+    title: "Logos de clientes",
+    description: "Faixa de logos que passa devagar logo abaixo dos slides. Os logos aparecem em preto e branco e esmaecidos.",
+    fields: [
+      {
+        kind: "images",
+        key: "home.logos",
+        label: "Logos",
+        objects: true,
+        hint: "PNG com fundo transparente ou logo escuro sobre fundo branco. Deixe vazio para esconder a faixa.",
+      },
+    ],
+  },
+  {
     id: "citacao",
     group: "Home",
     title: "Citação",

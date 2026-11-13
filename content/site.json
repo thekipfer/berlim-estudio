@@ -52,9 +52,21 @@
     "slidesMobile": [
       "/uploads/mwe0du24-16y9ur.webp",
       "/uploads/mwdzsgqh-gwh92w.webp",
+      "/uploads/mwfbi4yg-hzpge1.webp",
       "/uploads/mwe0duhx-m8uahz.webp",
-      "/uploads/mwe0duqk-ddf52a.webp",
       "/uploads/mwe0duz7-7vf2h2.webp"
+    ],
+    "logos": [
+      {
+        "src": "/images/logos/hangar-33.png",
+        "width": 1258,
+        "height": 612
+      },
+      {
+        "src": "/images/logos/lez-a-lez.jpg",
+        "width": 2362,
+        "height": 625
+      }
     ],
     "quote": "Fotografia e produção audiovisual para eventos corporativos, lançamentos de marcas, convenções, feiras e experiências empresariais.",
     "quoteHighlight": "empresariais.",

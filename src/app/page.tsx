@@ -1,6 +1,7 @@
 import { AppointmentSection } from "@/components/appointment-section";
 import { HeroSlideshow } from "@/components/hero-slideshow";
 import { LatestWorks } from "@/components/latest-works";
+import { LogoMarquee } from "@/components/logo-marquee";
 import { QuoteSection } from "@/components/quote-section";
 import { ServiceFlipCards } from "@/components/service-flip-cards";
 import { SiteFooter } from "@/components/site-footer";
@@ -14,6 +15,7 @@ export default function Home() {
       <SiteHeader centerLogo />
       <main>
         <HeroSlideshow />
+        <LogoMarquee />
         <QuoteSection />
         <ServiceFlipCards />
         <LatestWorks />
