@@ -4,7 +4,7 @@ import { del, list, put } from "@vercel/blob";
 import { usesBlob } from "@/lib/content-store";
 
 /*
- * Contact requests sent from the home booking form. Server-only.
+ * Requests sent from the site forms (home booking form and contact page). Server-only.
  * One JSON file per request: Vercel Blob ("leads/…", unguessable URL) or content/leads/ locally
  * (git-ignored: it holds personal data).
  */
@@ -12,6 +12,8 @@ import { usesBlob } from "@/lib/content-store";
 export interface Lead {
   id: string;
   createdAt: string;
+  /** Which form sent it (older requests have none: they came from the booking form). */
+  source?: "agendamento" | "contato";
   service: string;
   location: string;
   employee: string;

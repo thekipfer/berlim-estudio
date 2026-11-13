@@ -66,7 +66,7 @@ export function LeadsPanel({ onCount }: { onCount?: (n: number) => void }) {
           </div>
 
           <div className="mt-3 flex flex-wrap gap-1.5 text-xs">
-            {[row.service, row.location, row.employee].filter(Boolean).map((v, i) => (
+            {[row.source === "contato" ? "Formulário de contato" : "", row.service, row.location, row.employee].filter(Boolean).map((v, i) => (
               <span key={i} className="rounded-full bg-neutral-100 px-2.5 py-1 text-neutral-700">
                 {v}
               </span>
@@ -77,12 +77,16 @@ export function LeadsPanel({ onCount }: { onCount?: (n: number) => void }) {
             <a href={`mailto:${row.email}`} className="text-neutral-900 underline underline-offset-4">
               {row.email}
             </a>
-            <a href={`tel:${row.phone.replace(/[^\d+]/g, "")}`} className="text-neutral-900 underline underline-offset-4">
-              {row.phone}
-            </a>
-            <a href={whatsapp(row.phone)} target="_blank" rel="noreferrer" className="text-emerald-700 underline underline-offset-4">
-              WhatsApp ↗
-            </a>
+            {row.phone && (
+              <>
+                <a href={`tel:${row.phone.replace(/[^\d+]/g, "")}`} className="text-neutral-900 underline underline-offset-4">
+                  {row.phone}
+                </a>
+                <a href={whatsapp(row.phone)} target="_blank" rel="noreferrer" className="text-emerald-700 underline underline-offset-4">
+                  WhatsApp ↗
+                </a>
+              </>
+            )}
           </div>
 
           {row.message && <p className="mt-3 rounded-xl bg-neutral-50 p-3 text-sm whitespace-pre-wrap text-neutral-700">{row.message}</p>}
