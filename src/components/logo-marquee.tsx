@@ -45,8 +45,8 @@ export async function LogoMarquee() {
                   sizes="240px"
                   data-logo
                   draggable={false}
-                  style={{ "--logo-scale": logoScale(logo.width, logo.height) } as React.CSSProperties}
-                  className="h-[calc(36px*var(--logo-scale))] w-auto max-w-[200px] object-contain opacity-45 mix-blend-multiply grayscale transition-[opacity,filter] duration-300 hover:opacity-100 hover:contrast-200 data-[lit]:opacity-100 data-[lit]:contrast-200 tab:h-[calc(44px*var(--logo-scale))] tab:max-w-[240px]"
+                  style={{ "--logo-scale": logoScale(logo.width, logo.height) * (logo.scale ?? 1) } as React.CSSProperties}
+                  className="h-[calc(36px*var(--logo-scale))] w-auto max-w-[220px] object-contain opacity-45 mix-blend-multiply grayscale transition-[opacity,filter] duration-300 hover:opacity-100 hover:contrast-200 data-[lit]:opacity-100 data-[lit]:contrast-200 tab:h-[calc(44px*var(--logo-scale))] tab:max-w-[240px]"
                 />
               </li>
             ))}

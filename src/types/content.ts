@@ -64,6 +64,8 @@ export interface GalleryImage {
   src: string;
   width: number;
   height: number;
+  /** Logos strip only: extra size factor for logos that look small (1 = automatic size). */
+  scale?: number;
 }
 
 export interface Testimonial {

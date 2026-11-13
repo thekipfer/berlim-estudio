@@ -71,6 +71,22 @@
         "src": "/images/logos/cassol.jpg",
         "width": 849,
         "height": 215
+      },
+      {
+        "src": "/images/logos/lunelli.png",
+        "width": 1801,
+        "height": 483
+      },
+      {
+        "src": "/images/logos/kingspan.png",
+        "width": 411,
+        "height": 205,
+        "scale": 1.45
+      },
+      {
+        "src": "/images/logos/duas-rodas.webp",
+        "width": 1665,
+        "height": 986
       }
     ],
     "quote": "Fotografia e produção audiovisual para eventos corporativos, lançamentos de marcas, convenções, feiras e experiências empresariais.",
@@ -120,18 +136,11 @@
         "avatar": "/uploads/mwe03f8p-mj2pod.webp"
       },
       {
-        "quote": "Thank you is simply not enough. You have captured moments that our family will treasure forever. Such a pleasure to know you. We are looking forward to seeing you at out next family event.",
-        "name": "Ann Doe Marketing",
-        "company": " - ThemeGoods",
+        "quote": "Eu amei! Vocês são excelentes profissionais. A cobertura do evento ficou incrível. Parabéns pelo trabalho!",
+        "name": "Louise",
+        "company": " - HarmonizaPRO",
         "companyHref": "https://themegoods.com",
-        "avatar": "/images/testimonials/ann-doe.jpg"
-      },
-      {
-        "quote": "Stephen is an amazing professional at the top of his game. His images are technically superb. He has a wonderful way of putting people at ease.e knows what will make a good picture and is capable of creating the right setting.",
-        "name": "Mercel CEO - Apple",
-        "company": "",
-        "companyHref": "",
-        "avatar": "/images/testimonials/mercel.jpg"
+        "avatar": "/uploads/mwfc3veu-81z440.webp"
       }
     ],
     "whatWeDoTitle": "O que fazemos",
@@ -818,7 +827,7 @@
     "image": "/images/contact.jpg"
   },
   "footer": {
-    "contactTitle": "Contact",
+    "contactTitle": "Contato",
     "address": "R. Onze de Junho, 91 - Fazenda\nItajaí - Santa Catarina",
     "phone": "(47) 99279-0963",
     "email": "contato@berlimestudio.com",

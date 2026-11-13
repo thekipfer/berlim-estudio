@@ -35,6 +35,8 @@ export const defaultContent: SiteContent = {
       { src: "/images/logos/hangar-33.png", width: 1258, height: 612 },
       { src: "/images/logos/lez-a-lez.jpg", width: 2362, height: 625 },
       { src: "/images/logos/cassol.jpg", width: 849, height: 215 },
+      { src: "/images/logos/lunelli.png", width: 1801, height: 483 },
+      { src: "/images/logos/duas-rodas.webp", width: 1665, height: 986 },
     ],
     quote:
       "You don’t love someone for their looks, or their clothes or their fancy car, but because they sing a song only you can hear.",
