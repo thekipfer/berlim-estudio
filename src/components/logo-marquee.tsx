@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { getContent } from "@/lib/content-store";
+import { LogoStrip } from "@/components/logo-strip";
 import { editPhotos } from "@/lib/editable";
 
 const MIN_ITEMS = 8; // repeat short lists so the strip never shows a gap
@@ -15,7 +16,7 @@ const logoScale = (width?: number, height?: number) => {
   return Math.min(1.4, Math.max(0.7, Math.sqrt(REFERENCE_RATIO / ratio)));
 };
 
-/** Client logos in grayscale, gently faded, scrolling slowly and endlessly to the left. */
+/** Client logos in grayscale, gently faded, scrolling slowly to the left; can be dragged/swiped. Hover (or touch) darkens a logo. */
 export async function LogoMarquee() {
   const { home } = await getContent();
   const logos = (home.logos ?? []).filter((l) => l?.src);
@@ -30,28 +31,28 @@ export async function LogoMarquee() {
       className="overflow-hidden border-b border-black/5 bg-white py-10 tab:py-14"
       {...editPhotos("home.logos", "Editar logos")}
     >
-      <div className="[mask-image:linear-gradient(to_right,transparent,black_12%,black_88%,transparent)]">
-        {/* Two identical halves: moving by -50% loops seamlessly */}
-        <div className="logo-marquee flex w-max items-center">
-          {[0, 1].map((half) => (
-            <ul key={half} className="flex items-center" aria-hidden={half === 1}>
-              {strip.map((logo, i) => (
-                <li key={i} className="flex shrink-0 items-center px-8 tab:px-12">
-                  <Image
-                    src={logo.src}
-                    alt=""
-                    width={logo.width || 400}
-                    height={logo.height || 160}
-                    sizes="240px"
-                    style={{ "--logo-scale": logoScale(logo.width, logo.height) } as React.CSSProperties}
-                    className="h-[calc(36px*var(--logo-scale))] w-auto max-w-[200px] object-contain opacity-45 mix-blend-multiply grayscale transition-[opacity,filter] duration-300 hover:opacity-100 hover:contrast-200 tab:h-[calc(44px*var(--logo-scale))] tab:max-w-[240px]"
-                  />
-                </li>
-              ))}
-            </ul>
-          ))}
-        </div>
-      </div>
+      <LogoStrip className="[mask-image:linear-gradient(to_right,transparent,black_12%,black_88%,transparent)]">
+        {/* Two identical halves: moving by half the width loops seamlessly */}
+        {[0, 1].map((half) => (
+          <ul key={half} className="flex items-center" aria-hidden={half === 1}>
+            {strip.map((logo, i) => (
+              <li key={i} className="flex shrink-0 items-center px-8 tab:px-12">
+                <Image
+                  src={logo.src}
+                  alt=""
+                  width={logo.width || 400}
+                  height={logo.height || 160}
+                  sizes="240px"
+                  data-logo
+                  draggable={false}
+                  style={{ "--logo-scale": logoScale(logo.width, logo.height) } as React.CSSProperties}
+                  className="h-[calc(36px*var(--logo-scale))] w-auto max-w-[200px] object-contain opacity-45 mix-blend-multiply grayscale transition-[opacity,filter] duration-300 hover:opacity-100 hover:contrast-200 data-[lit]:opacity-100 data-[lit]:contrast-200 tab:h-[calc(44px*var(--logo-scale))] tab:max-w-[240px]"
+                />
+              </li>
+            ))}
+          </ul>
+        ))}
+      </LogoStrip>
     </section>
   );
 }
