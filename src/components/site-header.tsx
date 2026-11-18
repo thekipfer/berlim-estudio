@@ -15,7 +15,7 @@ type Tone = "light" | "dark";
 function MainNav({ tone }: { tone: Tone }) {
   const { nav } = useContent();
   return (
-    <nav className="h-[51.6px]" aria-label="Main">
+    <nav className="h-[51.6px]" aria-label="Menu principal">
       {/* gap = the whitespace between the theme's inline-block <li>s */}
       <ul className="flex gap-x-[4.4px] pt-[19px]">
         {nav.items.map((item, i) => (
@@ -58,7 +58,7 @@ function Hamburger({ tone, onClick, className }: { tone: Tone; onClick: () => vo
     <button
       type="button"
       onClick={onClick}
-      aria-label="Open menu"
+      aria-label="Abrir menu"
       className={cn(
         "flex cursor-pointer items-start pt-px leading-none",
         tone === "light" ? "text-white" : "text-black",
@@ -125,6 +125,9 @@ export function SiteHeader({ variant = "hero", centerLogo = false }: SiteHeaderP
   }, []);
 
   const mainVisible = ready && !scrolled;
+  // Before hydration the header is already in the HTML and shows itself after 200ms with CSS (.header-reveal),
+  // so the big logo (the page's largest element) doesn't wait for JavaScript. Same look as before.
+  const revealing = !ready && !scrolled;
 
   return (
     <>
@@ -141,7 +144,7 @@ export function SiteHeader({ variant = "hero", centerLogo = false }: SiteHeaderP
               "fixed top-0 left-0 w-full",
               // Centered logo: the header covers the screen but only its links/buttons take clicks.
               centerLogo && "h-svh pointer-events-none [&_a]:pointer-events-auto [&_button]:pointer-events-auto",
-              mainVisible ? "z-[9] opacity-100" : "pointer-events-none -z-10 opacity-0",
+              mainVisible ? "z-[9] opacity-100" : revealing ? "header-reveal z-[9] opacity-100" : "pointer-events-none -z-10 opacity-0",
             )}
           >
             <div className="flex justify-end pt-5 pr-5 desk:hidden">

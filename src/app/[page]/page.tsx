@@ -3,7 +3,9 @@ import { notFound, permanentRedirect } from "next/navigation";
 import { AboutPage } from "@/components/pages/about-page";
 import { ContactPage } from "@/components/pages/contact-page";
 import { WorksPage } from "@/components/pages/works-page";
+import { JsonLd } from "@/components/seo/json-ld";
 import { getContent } from "@/lib/content-store";
+import { buildMetadata, pageJsonLd, pageSeo } from "@/lib/seo";
 import { oldPageAt, PAGE_KEYS, pageAt, pageHref } from "@/lib/site";
 import type { PageKey } from "@/types/content";
 
@@ -15,12 +17,6 @@ import type { PageKey } from "@/types/content";
 interface PageProps {
   params: Promise<{ page: string }>;
 }
-
-const titles: Record<PageKey, string> = {
-  works: "Our Works",
-  about: "About",
-  contact: "Contato",
-};
 
 const pages: Record<PageKey, () => Promise<React.JSX.Element>> = {
   works: WorksPage,
@@ -35,8 +31,13 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { page } = await params;
-  const key = pageAt(await getContent(), decodeURIComponent(page));
-  return key ? { title: `${titles[key]} – Berlim Estúdio` } : {};
+  const content = await getContent();
+  const key = pageAt(content, decodeURIComponent(page));
+  if (!key) return {};
+  const { title, description } = pageSeo(content, key);
+  // Preview image: the page's own photo (portfolio: the first project's card).
+  const image = { works: content.projects[0]?.image, about: content.about.heroImage, contact: content.contact.image }[key];
+  return buildMetadata({ title, description, path: pageHref(content, key), image, imageAlt: title });
 }
 
 export default async function Page({ params }: PageProps) {
@@ -46,7 +47,12 @@ export default async function Page({ params }: PageProps) {
   const key = pageAt(content, slug);
   if (key) {
     const Render = pages[key];
-    return <Render />;
+    return (
+      <>
+        <JsonLd data={pageJsonLd(content, key)} />
+        <Render />
+      </>
+    );
   }
 
   // Old address of a renamed page: send visitors (and Google) to the new one.

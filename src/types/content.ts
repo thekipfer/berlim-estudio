@@ -58,6 +58,9 @@ export interface Project {
   /** Text and Client / Where / When of this project's page. Missing on older saved content: filled from projectPage. */
   intro?: string;
   meta?: { label: string; value: string }[];
+  /** Hand-written Google title/description for this project; empty = automatic (title, coverage, city). */
+  seoTitle?: string;
+  seoDescription?: string;
   /** When not false, the page address follows the title (set on save). */
   autoSlug?: boolean;
   /** Previous addresses of this project; they redirect to the current one. */
@@ -113,6 +116,8 @@ export type PageKey = "works" | "about" | "contact";
 /** Everything the admin editor can change. Stored as JSON and merged over the defaults. */
 export interface SiteContent {
   site: { title: string; description: string };
+  /** Hand-written Google title/description per page; empty = the automatic text from lib/seo.ts. */
+  seo: Record<"home" | PageKey, { title: string; description: string }>;
   /** Address of each page, without slashes ("our-works" → /our-works). */
   pages: Record<PageKey, string>;
   /** Earlier addresses of each page; they redirect to the current one. */

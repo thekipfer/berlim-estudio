@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { notFound, permanentRedirect } from "next/navigation";
 import { ProjectPage } from "@/components/pages/project-page";
+import { JsonLd } from "@/components/seo/json-ld";
 import { getContent } from "@/lib/content-store";
+import { buildMetadata, projectDescription, projectJsonLd, projectPhotoAlt, projectTitle } from "@/lib/seo";
 import { findProject, oldPageAt, projectHref } from "@/lib/site";
 
 /* Project pages live under the Our Works address: /<works address>/<project>. */
@@ -19,7 +21,14 @@ export async function generateMetadata({ params }: ProjectRouteProps): Promise<M
   const { page, slug } = await params;
   const content = await getContent();
   const project = decodeURIComponent(page) === content.pages.works ? findProject(content, slug) : undefined;
-  return { title: project ? `${project.title} – Berlim Estúdio` : "Berlim Estúdio" };
+  if (!project) return {};
+  return buildMetadata({
+    title: projectTitle(project),
+    description: projectDescription(content, project),
+    path: projectHref(content, project.slug),
+    image: project.hero || project.image,
+    imageAlt: projectPhotoAlt(project),
+  });
 }
 
 export default async function ProjectRoute({ params }: ProjectRouteProps) {
@@ -39,5 +48,11 @@ export default async function ProjectRoute({ params }: ProjectRouteProps) {
     if (moved) permanentRedirect(projectHref(content, moved.slug));
   }
 
-  return <ProjectPage slug={slug} />;
+  const project = findProject(content, slug);
+  return (
+    <>
+      {project && <JsonLd data={projectJsonLd(content, project)} />}
+      <ProjectPage slug={slug} />
+    </>
+  );
 }

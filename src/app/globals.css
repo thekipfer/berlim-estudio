@@ -283,3 +283,17 @@
 [data-editing] .edit-passthrough {
   pointer-events: none;
 }
+
+/* Transparent hero header: hidden for its first 200ms, then shown (no JavaScript needed, see SiteHeader). */
+@keyframes header-reveal {
+  0%,
+  99.9% {
+    visibility: hidden;
+  }
+  100% {
+    visibility: visible;
+  }
+}
+.header-reveal {
+  animation: header-reveal 0.2s linear;
+}

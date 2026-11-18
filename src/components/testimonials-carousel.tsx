@@ -27,7 +27,7 @@ function Card({ t, index }: { t: Testimonial; index: number }) {
       <div className="inline-block align-middle" {...editImage(`${path}.avatar`)}>
         <Image
           src={t.avatar}
-          alt=""
+          alt={t.name}
           width={150}
           height={150}
           className="mr-[10px] max-w-[40px] rounded-[50px]"

@@ -7,6 +7,7 @@ import { WorkCard } from "@/components/work-card";
 import { getContent } from "@/lib/content-store";
 import { findProject, projectIndex, projectItems } from "@/lib/site";
 import { edit, editImage } from "@/lib/editable";
+import { projectPhotoAlt } from "@/lib/seo";
 import type { Project } from "@/types/content";
 
 /** How many projects "Other works" always shows (when there are enough). */
@@ -39,7 +40,7 @@ export async function ProjectPage({ slug }: { slug: string }) {
       <main>
         {/* Full-height cover with the title at the bottom */}
         <section className="relative flex min-h-screen items-end" {...editImage(`${path}.hero`)}>
-          <Image src={project.hero} alt="" fill preload sizes="100vw" className="object-cover object-center" />
+          <Image src={project.hero} alt={`${project.title} – foto de capa`} fill preload sizes="100vw" className="object-cover object-center" />
           <div className="absolute inset-0 bg-black/20" />
           <div className="relative mx-auto w-full max-w-[1140px] px-5 pb-5 tab:pb-[30px] desk:px-0 desk:pb-10">
             <h1 className="mx-auto w-full text-center font-heading text-[30px] leading-[1.3] font-semibold text-white tab:w-[80%] tab:text-[44px] tab:leading-[1.1] tab:tracking-[-1px] desk:mx-0 desk:w-[70%] desk:text-left desk:text-[60px]" {...edit(`${path}.title`)}>
@@ -58,7 +59,7 @@ export async function ProjectPage({ slug }: { slug: string }) {
             <dl className="mt-8 divide-y divide-black/10 border-y border-black/10 text-left tab:mt-[60px] tab:grid tab:grid-cols-3 tab:gap-x-5 tab:divide-y-0 tab:border-0 tab:text-center desk:text-left">
               {(project.meta ?? projectPage.meta).map((item, i) => (
                 <div key={i} className="py-4 tab:py-0">
-                  <dt className="font-heading text-[12px] leading-none font-semibold tracking-[0.12em] text-[#818181] uppercase tab:text-[18px] tab:tracking-normal" {...edit(`${path}.meta.${i}.label`)}>
+                  <dt className="font-heading text-[12px] leading-none font-semibold tracking-[0.12em] text-[#6b6b6b] uppercase tab:text-[18px] tab:tracking-normal tab:text-[#818181]" {...edit(`${path}.meta.${i}.label`)}>
                     {item.label}
                   </dt>
                   <dd className="mt-2 text-[17px] leading-[1.4] text-black tab:mt-[10px] tab:text-[18px] tab:leading-[1.3]" {...edit(`${path}.meta.${i}.value`)}>
@@ -70,7 +71,7 @@ export async function ProjectPage({ slug }: { slug: string }) {
           </div>
         </section>
 
-        <ProjectGallery images={project.gallery ?? projectPage.gallery} editPath={`${path}.gallery`} />
+        <ProjectGallery images={project.gallery ?? projectPage.gallery} editPath={`${path}.gallery`} alt={projectPhotoAlt(project)} />
         {/* Breathing room before the footer when there is no "Other works" block */}
         {related.length === 0 && <div className="h-[60px] desk:h-[100px]" />}
 

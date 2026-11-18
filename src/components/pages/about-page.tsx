@@ -47,7 +47,7 @@ function FeatureImage({ feature, side, index }: { feature: AboutFeature; side: "
     >
       <Image
         src={feature.image}
-        alt=""
+        alt={feature.title}
         width={feature.width}
         height={feature.height}
         sizes="(min-width: 1025px) 550px, (min-width: 768px) 50vw, 100vw"

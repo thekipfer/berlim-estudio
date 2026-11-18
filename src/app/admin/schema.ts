@@ -94,12 +94,28 @@ export const sections: SectionDef[] = [
     title: "Identidade",
     description: "Nome do site (aba do navegador e Google) e logos.",
     fields: [
-      { kind: "text", key: "site.title", label: "Nome do site" },
-      { kind: "textarea", key: "site.description", label: "Descrição", hint: "Aparece no Google e ao compartilhar o link." },
+      { kind: "text", key: "site.title", label: "Nome do site", hint: "Usado onde uma página não tem título próprio. Os títulos do Google ficam em Geral → SEO (Google)." },
+      { kind: "textarea", key: "site.description", label: "Descrição", hint: "Texto reserva. As descrições do Google ficam em Geral → SEO (Google)." },
       { kind: "image", key: "brand.logoHero", label: "Logo grande (branca)", hint: "Topo da home e das páginas de projeto. PNG transparente.", dark: true },
       { kind: "image", key: "brand.logoBar", label: "Logo da barra (preta)", hint: "Barra branca do topo." },
       { kind: "image", key: "brand.logoFooter", label: "Logo do rodapé (branca)", dark: true },
     ],
+  },
+  {
+    id: "seo",
+    group: "Geral",
+    title: "SEO (Google)",
+    description:
+      "Título e descrição que aparecem no Google e ao compartilhar o link. Deixe vazio para usar o texto automático, que já é otimizado (serviço, cidade e dados reais do site). Título: até ~60 caracteres. Descrição: até ~155.",
+    fields: (["home", "works", "about", "contact"] as const).map((key) => ({
+      kind: "group" as const,
+      key: `seo.${key}`,
+      label: { home: "Página inicial", works: "Portfólio", about: "Sobre", contact: "Contato" }[key],
+      fields: [
+        { kind: "text" as const, key: "title", label: "Título no Google", hint: "Vazio = automático." },
+        { kind: "textarea" as const, key: "description", label: "Descrição no Google", hint: "Vazio = automática." },
+      ],
+    })),
   },
   {
     id: "menu",
@@ -317,6 +333,8 @@ export const sections: SectionDef[] = [
             defaultValue: true,
           },
           { kind: "text", key: "slug", label: "Endereço da página", hint: "Usado quando o endereço automático está desligado. Ex.: casamento-ana-e-pedro." },
+          { kind: "text", key: "seoTitle", label: "Título no Google (opcional)", hint: "Vazio = automático: nome do projeto, tipo de cobertura e cidade (do campo Local)." },
+          { kind: "textarea", key: "seoDescription", label: "Descrição no Google (opcional)", hint: "Vazio = automática: texto de introdução + cliente, local e data." },
           { kind: "image", key: "image", label: "Foto do card" },
           { kind: "image", key: "hero", label: "Foto de capa da página" },
           { kind: "images", key: "gallery", label: "Galeria de fotos", objects: true, hint: "Fotos da página deste projeto. Passe o mouse sobre uma foto para trocar, mudar de posição ou apagar." },

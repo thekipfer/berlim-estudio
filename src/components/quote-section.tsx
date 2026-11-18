@@ -20,7 +20,7 @@ export async function QuoteSection() {
     <section className="py-[60px] tab:py-20 desk:py-[100px]">
       <div className="mx-auto max-w-[1140px]">
         <div className="relative flex flex-wrap justify-center px-5 tab:px-0">
-          <h2
+          <h1
             className="w-full text-center font-heading text-[26px] leading-[1.4] tab:w-[80%] tab:text-left tab:text-[30px] tab:leading-[1.3] desk:w-[70%] desk:text-[36px] desk:leading-[1.2]"
             {...edit("home.quote")}
             {...editHighlight("home.quoteHighlight")}
@@ -55,7 +55,7 @@ export async function QuoteSection() {
             ) : (
               home.quote
             )}
-          </h2>
+          </h1>
 
           <div className="h-[50px] w-full desk:h-[60px]" />
 

@@ -14,7 +14,7 @@ export function OurWorksGrid({ items, filters, allLabel }: { items: PortfolioIte
   return (
     <section>
       <div className="mx-auto max-w-[1140px] px-5 pb-10 tab:px-[30px] desk:px-0">
-        <div className="mb-10 text-center" role="group" aria-label="Filter works">
+        <div className="mb-10 text-center" role="group" aria-label="Filtrar trabalhos">
           {tabs.map((f) => (
             <button
               key={f.value}

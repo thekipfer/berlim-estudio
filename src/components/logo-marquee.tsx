@@ -16,6 +16,21 @@ const logoScale = (width?: number, height?: number) => {
   return Math.min(1.4, Math.max(0.7, Math.sqrt(REFERENCE_RATIO / ratio)));
 };
 
+/**
+ * Client name from a readable file name ("/images/logos/duas-rodas.webp" → "Duas Rodas").
+ * Uploaded files have random names, so they get no name (never guess a client).
+ */
+const SMALL_WORDS = new Set(["a", "e", "de", "da", "do", "das", "dos"]);
+function clientName(src: string) {
+  const m = src.match(/^\/images\/logos\/([^/]+)\.[a-z0-9]+$/i);
+  if (!m) return "";
+  return m[1]
+    .replace(/[-_]+(trim|logo|branco|preto|white|black)$/i, "")
+    .split(/[-_\s]+/)
+    .map((w, i) => (i > 0 && SMALL_WORDS.has(w.toLowerCase()) ? w.toLowerCase() : w.charAt(0).toUpperCase() + w.slice(1)))
+    .join(" ");
+}
+
 /** Client logos in grayscale, gently faded, scrolling slowly to the left; can be dragged/swiped. Hover (or touch) darkens a logo. */
 export async function LogoMarquee() {
   const { home } = await getContent();
@@ -39,7 +54,8 @@ export async function LogoMarquee() {
               <li key={i} className="flex shrink-0 items-center px-8 tab:px-12">
                 <Image
                   src={logo.src}
-                  alt=""
+                  // Named once (first copy); the repeats that fill the strip stay silent.
+                  alt={half === 0 && i < logos.length && clientName(logo.src) ? `Logo ${clientName(logo.src)}` : ""}
                   width={logo.width || 400}
                   height={logo.height || 160}
                   sizes="240px"

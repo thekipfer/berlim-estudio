@@ -3,7 +3,7 @@ import type { PageKey, PortfolioItem, Project, SiteContent } from "@/types/conte
 export const PAGE_KEYS: PageKey[] = ["works", "about", "contact"];
 
 /** Top-level paths used by the app itself; a page can't take these addresses. */
-const RESERVED_SLUGS = new Set(["admin", "api", "images", "uploads", "seo", "favicon.ico", "_next"]);
+const RESERVED_SLUGS = new Set(["admin", "api", "images", "uploads", "videos", "seo", "og", "favicon.ico", "sitemap.xml", "robots.txt", "llms.txt", "_next"]);
 
 export const pageHref = (content: SiteContent, key: PageKey) => `/${content.pages[key]}`;
 

@@ -40,7 +40,7 @@ export async function SiteFooter() {
           </div>
 
           {/* Menu */}
-          <nav aria-label="Footer">
+          <nav aria-label="Rodapé">
             <ColumnTitle path="footer.menuTitle">{footer.menuTitle}</ColumnTitle>
             <ul className="space-y-1">
               {footer.links.map((link, i) => (

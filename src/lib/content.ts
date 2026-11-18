@@ -9,6 +9,12 @@ export const defaultContent: SiteContent = {
     title: "Berlim Estúdio",
     description: "Berlim Estúdio – fotografia e vídeo.",
   },
+  seo: {
+    home: { title: "", description: "" },
+    works: { title: "", description: "" },
+    about: { title: "", description: "" },
+    contact: { title: "", description: "" },
+  },
 
   pages: { works: "our-works", about: "about", contact: "contato" },
   oldPages: { works: [], about: [], contact: [] },

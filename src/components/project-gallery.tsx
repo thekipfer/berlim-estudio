@@ -27,11 +27,13 @@ function GalleryItem({
   image,
   index,
   delay,
+  alt,
   onOpen,
 }: {
   image: GalleryImage;
   index: number;
   delay?: string;
+  alt: string;
   onOpen: (index: number) => void;
 }) {
   return (
@@ -43,12 +45,12 @@ function GalleryItem({
       <button
         type="button"
         onClick={() => onOpen(index)}
-        aria-label={`Open image ${index + 1}`}
+        aria-label={`Ampliar foto ${index + 1}`}
         className="group relative block w-full cursor-zoom-in overflow-hidden rounded-[15px]"
       >
         <Image
           src={image.src}
-          alt=""
+          alt={photoAlt(alt, index)}
           width={image.width}
           height={image.height}
           sizes="(min-width: 768px) 33vw, 100vw"
@@ -60,8 +62,11 @@ function GalleryItem({
   );
 }
 
-/** 3-column masonry gallery (1 column on mobile) that opens a lightbox. */
-export function ProjectGallery({ images, editPath }: { images: GalleryImage[]; editPath: string }) {
+/** "Hangar 33 – cobertura de evento em Joinville, SC (foto 3)" */
+export const photoAlt = (base: string, index: number) => (base ? `${base} (foto ${index + 1})` : "");
+
+/** 3-column masonry gallery (1 column on mobile) that opens a lightbox. `alt` describes the project (see lib/seo). */
+export function ProjectGallery({ images, editPath, alt = "" }: { images: GalleryImage[]; editPath: string; alt?: string }) {
   const [open, setOpen] = useState<number | null>(null);
   const columns = toColumns(images);
 
@@ -70,7 +75,7 @@ export function ProjectGallery({ images, editPath }: { images: GalleryImage[]; e
       {/* Mobile: single column in original order */}
       <div className="flex flex-col gap-[30px] tab:hidden">
         {images.map((image, index) => (
-          <GalleryItem key={image.src} image={image} index={index} onOpen={setOpen} />
+          <GalleryItem key={image.src} image={image} index={index} alt={alt} onOpen={setOpen} />
         ))}
       </div>
 
@@ -79,13 +84,13 @@ export function ProjectGallery({ images, editPath }: { images: GalleryImage[]; e
         {columns.map((column, c) => (
           <div key={c} className="flex min-w-0 flex-1 flex-col gap-[30px]">
             {column.map(({ image, index }) => (
-              <GalleryItem key={image.src} image={image} index={index} delay={columnDelay[c]} onOpen={setOpen} />
+              <GalleryItem key={image.src} image={image} index={index} alt={alt} delay={columnDelay[c]} onOpen={setOpen} />
             ))}
           </div>
         ))}
       </div>
 
-      <Lightbox images={images} index={open} onClose={() => setOpen(null)} onIndexChange={setOpen} />
+      <Lightbox images={images} index={open} alt={alt} onClose={() => setOpen(null)} onIndexChange={setOpen} />
     </section>
   );
 }

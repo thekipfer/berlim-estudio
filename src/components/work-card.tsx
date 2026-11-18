@@ -26,7 +26,7 @@ export function WorkCard({ item, index }: { item: PortfolioItem; index: number }
       >
         <Image
           src={item.image}
-          alt=""
+          alt={`${item.title}${item.category ? ` – ${item.category}` : ""}`}
           fill
           sizes="(min-width: 1025px) 545px, (min-width: 768px) 50vw, 100vw"
           className="object-cover"

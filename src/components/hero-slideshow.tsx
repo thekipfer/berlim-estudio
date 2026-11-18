@@ -78,7 +78,7 @@ export function HeroSlideshow() {
   const hasMobile = mobile.length > 0;
 
   return (
-    <section className="relative h-screen w-full overflow-hidden bg-black" aria-label="Featured photography">
+    <section className="relative h-screen w-full overflow-hidden bg-black" aria-label="Fotos em destaque">
       <SlideLayer
         slides={desktop}
         preloadFirst={!hasMobile}

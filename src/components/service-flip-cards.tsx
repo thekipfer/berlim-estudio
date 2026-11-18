@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { LazyVideo } from "@/components/lazy-video";
 import { getContent } from "@/lib/content-store";
 import { cn } from "@/lib/utils";
 import type { LinkItem, ServiceCard } from "@/types/content";
@@ -12,18 +13,8 @@ function FlipCard({ card, cta, tracking, index }: { card: ServiceCard; cta: Link
       {/* Front */}
       <div className="flip-face flip-face--front">
         {card.video ? (
-          // Muted + playsInline lets phones autoplay; the poster shows until it starts (or if autoplay is blocked).
-          <video
-            src={card.video}
-            poster={card.image}
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="metadata"
-            aria-hidden="true"
-            className="absolute inset-0 h-full w-full object-cover"
-          />
+          // Muted + playsInline lets phones autoplay; the poster shows until it starts. Downloads only near the screen.
+          <LazyVideo src={card.video} poster={card.image} className="absolute inset-0 h-full w-full object-cover" />
         ) : (
           <Image src={card.image} alt="" fill sizes="(min-width: 768px) 33vw, 100vw" className="object-cover" />
         )}
