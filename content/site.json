@@ -122,7 +122,7 @@
       "convencao-lunelli",
       "metodo-rocha",
       "harmonizapro",
-      "lezalez-continental"
+      "convencao-lezalez"
     ],
     "worksCta": {
       "label": "Ver todos",
@@ -344,7 +344,8 @@
           "label": "Data",
           "value": "Agosto 2026"
         }
-      ]
+      ],
+      "id": "pmwmlic4cnxew7"
     },
     {
       "slug": "harmonizapro",
@@ -467,14 +468,15 @@
           "label": "Data",
           "value": "Outubro 2026"
         }
-      ]
+      ],
+      "id": "pmwmlic4dxw72f"
     },
     {
-      "slug": "lezalez-continental",
-      "title": "Lezalez Continental",
+      "slug": "convencao-lezalez",
+      "title": "Convenção Lezalez",
       "category": "fotografia",
-      "image": "/uploads/mwdtciy3-6y406h.webp",
-      "hero": "/images/projects/where-reality.jpg",
+      "image": "/uploads/mwmkzc38-0j29vb.webp",
+      "hero": "/uploads/mwmkzz9m-h4z071.webp",
       "tags": [
         "street-photography"
       ],
@@ -483,63 +485,89 @@
       ],
       "gallery": [
         {
-          "src": "/images/projects/gallery-anita.jpg",
-          "width": 768,
-          "height": 1144
+          "src": "/uploads/mwml0bh2-ibsran.webp",
+          "width": 2400,
+          "height": 1600
         },
         {
-          "src": "/images/projects/roaming.jpg",
-          "width": 2000,
-          "height": 1333
+          "src": "/uploads/mwml0cdd-tgbsaw.webp",
+          "width": 2400,
+          "height": 1600
         },
         {
-          "src": "/images/projects/gallery-vintage.jpg",
-          "width": 2000,
-          "height": 1335
+          "src": "/uploads/mwml0g3l-ria39w.webp",
+          "width": 1600,
+          "height": 2400
         },
         {
-          "src": "/images/projects/gallery-elegant.jpg",
-          "width": 2000,
-          "height": 1333
+          "src": "/uploads/mwml0brw-p2yu5f.webp",
+          "width": 1600,
+          "height": 2400
         },
         {
-          "src": "/images/projects/gallery-beautiful.jpg",
-          "width": 2000,
-          "height": 1333
+          "src": "/uploads/mwml0c2u-l7dlzc.webp",
+          "width": 1600,
+          "height": 2400
         },
         {
-          "src": "/images/projects/gallery-priscilla.jpg",
-          "width": 800,
-          "height": 1200
+          "src": "/uploads/mwml0esm-k8ldt8.webp",
+          "width": 1600,
+          "height": 2400
         },
         {
-          "src": "/images/projects/vibrant.jpg",
-          "width": 2000,
-          "height": 1333
+          "src": "/uploads/mwml0frh-raphqd.webp",
+          "width": 2400,
+          "height": 1600
         },
         {
-          "src": "/images/projects/gallery-stephanie.jpg",
-          "width": 801,
-          "height": 1200
+          "src": "/uploads/mwml0dq9-qb1kux.webp",
+          "width": 2400,
+          "height": 1600
         },
         {
-          "src": "/images/projects/gallery-square.jpg",
-          "width": 1080,
-          "height": 1080
+          "src": "/uploads/mwml0cp6-pyjwv1.webp",
+          "width": 1600,
+          "height": 2400
         },
         {
-          "src": "/images/projects/capturing.jpg",
-          "width": 2000,
-          "height": 1333
+          "src": "/uploads/mwml0d0z-qfxa80.webp",
+          "width": 1600,
+          "height": 2400
         },
         {
-          "src": "/images/projects/finding-peace.jpg",
-          "width": 1440,
-          "height": 961
+          "src": "/uploads/mwml0ddl-pltqec.webp",
+          "width": 2400,
+          "height": 1600
+        },
+        {
+          "src": "/uploads/mwml0e2y-kxjhzr.webp",
+          "width": 2400,
+          "height": 1600
+        },
+        {
+          "src": "/uploads/mwmlmq66-0qn0zv.webp",
+          "width": 2400,
+          "height": 1600
+        },
+        {
+          "src": "/uploads/mwml0f4d-dnlbri.webp",
+          "width": 1600,
+          "height": 2400
+        },
+        {
+          "src": "/uploads/mwml0eha-40o7b8.webp",
+          "width": 2400,
+          "height": 1600
+        },
+        {
+          "src": "/uploads/mwml0ffz-rkjo2e.webp",
+          "width": 1600,
+          "height": 2400
         }
       ],
       "oldSlugs": [
-        "where-reality-and-imagination-collide"
+        "where-reality-and-imagination-collide",
+        "lezalez-continental"
       ],
       "intro": "A BERLIM ESTÚDIO registrou os principais momentos, palestras e experiências do evento Método ROCHA.",
       "meta": [
@@ -555,14 +583,15 @@
           "label": "Data",
           "value": "Agosto 2026"
         }
-      ]
+      ],
+      "id": "pmwmlic4dzu12e"
     },
     {
       "slug": "convencao-lunelli",
       "title": "Convenção Lunelli",
       "category": "evento",
       "image": "/uploads/mwdt3txb-suager.webp",
-      "hero": "/images/projects/roaming.jpg",
+      "hero": "/uploads/mwmli6ux-h6xmtd.webp",
       "tags": [
         "portrait",
         "wedding"
@@ -570,67 +599,11 @@
       "related": [
         "harmonizapro"
       ],
-      "gallery": [
-        {
-          "src": "/images/projects/gallery-anita.jpg",
-          "width": 768,
-          "height": 1144
-        },
-        {
-          "src": "/images/projects/roaming.jpg",
-          "width": 2000,
-          "height": 1333
-        },
-        {
-          "src": "/images/projects/gallery-vintage.jpg",
-          "width": 2000,
-          "height": 1335
-        },
-        {
-          "src": "/images/projects/gallery-elegant.jpg",
-          "width": 2000,
-          "height": 1333
-        },
-        {
-          "src": "/images/projects/gallery-beautiful.jpg",
-          "width": 2000,
-          "height": 1333
-        },
-        {
-          "src": "/images/projects/gallery-priscilla.jpg",
-          "width": 800,
-          "height": 1200
-        },
-        {
-          "src": "/images/projects/vibrant.jpg",
-          "width": 2000,
-          "height": 1333
-        },
-        {
-          "src": "/images/projects/gallery-stephanie.jpg",
-          "width": 801,
-          "height": 1200
-        },
-        {
-          "src": "/images/projects/gallery-square.jpg",
-          "width": 1080,
-          "height": 1080
-        },
-        {
-          "src": "/images/projects/capturing.jpg",
-          "width": 2000,
-          "height": 1333
-        },
-        {
-          "src": "/images/projects/finding-peace.jpg",
-          "width": 1440,
-          "height": 961
-        }
-      ],
+      "gallery": [],
       "oldSlugs": [
         "roaming-the-worlds-pathways"
       ],
-      "intro": "A BERLIM ESTÚDIO registrou os principais momentos, palestras e experiências do evento Método ROCHA.",
+      "intro": "A BERLIM ESTÚDIO registrou os principais momentos, palestras e experiências do evento Convenção Lunelli.",
       "meta": [
         {
           "label": "Cliente",
@@ -644,7 +617,8 @@
           "label": "Data",
           "value": "Agosto 2026"
         }
-      ]
+      ],
+      "id": "pmwmlic4dgnakp"
     }
   ],
   "projectPage": {

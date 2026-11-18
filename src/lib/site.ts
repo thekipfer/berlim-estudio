@@ -112,24 +112,33 @@ export function applyPageSlugs(previous: SiteContent, next: SiteContent): SiteCo
 
 /**
  * Project addresses that follow the title ("Método ROCHA" → "metodo-rocha") unless autoSlug is false.
+ * Each project is matched to its saved version (by id, then address, then position), so a changed
+ * address is noticed however it was changed (title, address field, or both).
  * Renamed projects keep their old address (it redirects) and every reference is updated:
- * the home grid, "Other works" and links pointing to /<works>/<old>.
+ * the home grid, "Other works" and links pointing to /<works>/<old>. References to deleted projects are dropped.
  */
-export function applyProjectSlugs(content: SiteContent): SiteContent {
+export function applyProjectSlugs(previous: SiteContent, content: SiteContent): SiteContent {
+  const before = matchSavedProjects(previous.projects, content.projects);
   const renames = new Map<string, string>();
   const used = new Set<string>();
-  const projects = content.projects.map((p) => {
+  const projects = content.projects.map((p, i) => {
     let slug = p.autoSlug === false ? slugify(p.slug) || slugify(p.title) : slugify(p.title) || slugify(p.slug);
     slug ||= "projeto";
     const base = slug;
     for (let n = 2; used.has(slug); n++) slug = `${base}-${n}`;
     used.add(slug);
-    if (p.slug && slug !== p.slug) renames.set(p.slug, slug);
-    return { ...p, slug };
+    const saved = before[i];
+    // Both the saved address and the one sent by the editor now lead here.
+    for (const old of [saved?.slug, p.slug]) if (old && old !== slug) renames.set(old, slug);
+    // Only addresses that were really published redirect (not ones typed while editing).
+    const old = new Set([...(saved?.oldSlugs ?? []), ...(p.oldSlugs ?? [])]);
+    if (saved?.slug && saved.slug !== slug) old.add(saved.slug);
+    return { ...p, id: p.id || saved?.id || newProjectId(), slug, oldSlugs: [...old] };
   });
-  if (renames.size === 0) return { ...content, projects };
+  for (const p of projects) p.oldSlugs = p.oldSlugs.filter((s) => !used.has(s)); // an address in use is no longer "old"
 
   const follow = (s: string) => renames.get(s) ?? s;
+  const keep = (list: string[]) => [...new Set(list.map(follow))].filter((s) => used.has(s));
   const works = content.pages.works;
   const fixHrefs = <T,>(value: T): T => {
     if (Array.isArray(value)) return value.map(fixHrefs) as T;
@@ -144,15 +153,34 @@ export function applyProjectSlugs(content: SiteContent): SiteContent {
 
   const updated: SiteContent = {
     ...content,
-    home: { ...content.home, works: content.home.works.map(follow) },
-    projects: projects.map((p, i) => {
-      const old = new Set(p.oldSlugs ?? []);
-      const before = content.projects[i].slug;
-      if (before && before !== p.slug) old.add(before);
-      for (const s of used) old.delete(s); // an address in use is no longer "old"
-      return { ...p, related: p.related.map(follow), oldSlugs: [...old] };
-    }),
+    home: { ...content.home, works: keep(content.home.works) },
+    projects: projects.map((p) => ({ ...p, related: keep(p.related).filter((s) => s !== p.slug) })),
   };
-  return fixHrefs(updated);
+  return renames.size ? fixHrefs(updated) : updated;
+}
+
+const newProjectId = () => `p${Date.now().toString(36)}${Math.random().toString(36).slice(2, 7)}`;
+
+/** The saved version of each project being saved (undefined = new project). */
+function matchSavedProjects(saved: Project[], next: Project[]): (Project | undefined)[] {
+  const taken = new Set<Project>();
+  const claim = (p: Project | undefined) => (p && !taken.has(p) ? (taken.add(p), p) : undefined);
+  const nextSlugs = new Set(next.map((p) => p.slug));
+  const result: (Project | undefined)[] = next.map((p) => claim(p.id ? saved.find((s) => s.id === p.id) : undefined));
+  // Content saved before ids existed: same address, then same position (if that address was not kept by another project).
+  next.forEach((p, i) => {
+    result[i] ??= claim(p.slug ? saved.find((s) => !s.id && s.slug === p.slug) : undefined);
+  });
+  next.forEach((_, i) => {
+    const s = saved[i];
+    if (!result[i] && s && !s.id && !nextSlugs.has(s.slug)) result[i] = claim(s);
+  });
+  // Moved and renamed at once: same card photo, then same title.
+  const loose = (p: Project, key: "image" | "title") =>
+    p[key] ? saved.find((s) => !s.id && !taken.has(s) && !nextSlugs.has(s.slug) && s[key] === p[key]) : undefined;
+  next.forEach((p, i) => {
+    result[i] ??= claim(loose(p, "image") ?? loose(p, "title"));
+  });
+  return result;
 }
 

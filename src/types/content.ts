@@ -41,6 +41,8 @@ export interface PortfolioItem {
 }
 
 export interface Project {
+  /** Stable identity (set on save), so an address change can be told apart from a new project. */
+  id?: string;
   slug: string;
   title: string;
   category: string;

@@ -40,7 +40,7 @@ export async function save(input: SiteContent): Promise<SaveResult> {
     works: { ...previous.works, ...input.works },
   });
   // Projects with "endereço automático" get an address that follows their title.
-  const content = applyProjectSlugs(applyCategoryChanges(previous, withPages));
+  const content = applyProjectSlugs(previous, applyCategoryChanges(previous, withPages));
   try {
     await saveContent(content);
   } catch (error) {

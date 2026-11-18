@@ -7,6 +7,22 @@ import { WorkCard } from "@/components/work-card";
 import { getContent } from "@/lib/content-store";
 import { findProject, projectIndex, projectItems } from "@/lib/site";
 import { edit, editImage } from "@/lib/editable";
+import type { Project } from "@/types/content";
+
+/** How many projects "Other works" always shows (when there are enough). */
+const OTHER_WORKS_COUNT = 2;
+
+/**
+ * The projects picked under "Outros trabalhos" first, then filled with the next projects
+ * in the list (wrapping around), so each page shows different ones. Never the project itself.
+ */
+function otherWorks(projects: Project[], project: Project): string[] {
+  const exists = new Set(projects.map((p) => p.slug));
+  const picked = project.related.filter((s) => s !== project.slug && exists.has(s));
+  const start = projects.findIndex((p) => p.slug === project.slug);
+  const after = [...projects.slice(start + 1), ...projects.slice(0, Math.max(start, 0))].map((p) => p.slug);
+  return [...new Set([...picked, ...after])].filter((s) => s !== project.slug).slice(0, OTHER_WORKS_COUNT);
+}
 
 export async function ProjectPage({ slug }: { slug: string }) {
   const content = await getContent();
@@ -15,7 +31,7 @@ export async function ProjectPage({ slug }: { slug: string }) {
 
   const { projectPage } = content;
   const path = `projects.${projectIndex(content, slug)}`;
-  const related = projectItems(content, project.related.filter((s) => s !== project.slug));
+  const related = projectItems(content, otherWorks(content.projects, project));
 
   return (
     <>

@@ -12,7 +12,10 @@ import { getLeads } from "@/lib/lead-actions";
 import { LeadsPanel } from "./leads-panel";
 import { sectionGroups, sections } from "./schema";
 
-/** Fill empty/duplicate project slugs from titles and drop links to removed projects. */
+/**
+ * Fill empty/duplicate project slugs from titles. Links to renamed or removed projects
+ * (home grid, "Other works") are left for the server, which knows the saved addresses.
+ */
 function normalize(content: SiteContent): SiteContent {
   const used = new Set<string>();
   const projects = content.projects.map((p) => {
@@ -22,12 +25,7 @@ function normalize(content: SiteContent): SiteContent {
     used.add(slug);
     return { ...p, slug };
   });
-  const exists = (s: string) => used.has(s);
-  return {
-    ...content,
-    projects: projects.map((p) => ({ ...p, related: p.related.filter(exists) })),
-    home: { ...content.home, works: content.home.works.filter(exists) },
-  };
+  return { ...content, projects };
 }
 
 /** Pseudo-section id for the contact requests list. */
