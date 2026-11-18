@@ -254,7 +254,7 @@ export const defaultContent: SiteContent = {
     followTitle: "Follow",
     socials: [
       { label: "Instagram", href: "https://www.instagram.com/berlimestudio/", icon: "instagram" },
-      { label: "LinkedIn", href: "https://www.linkedin.com/company/berlimestudio/", icon: "linkedin" },
+      { label: "LinkedIn", href: "https://www.linkedin.com/company/berlim-estudio", icon: "linkedin" },
     ],
   },
 };

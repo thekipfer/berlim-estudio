@@ -147,7 +147,7 @@ export function SiteHeader({ variant = "hero", centerLogo = false }: SiteHeaderP
               mainVisible ? "z-[9] opacity-100" : revealing ? "header-reveal z-[9] opacity-100" : "pointer-events-none -z-10 opacity-0",
             )}
           >
-            <div className="flex justify-end pt-5 pr-5 desk:hidden">
+            <div className="hero-nav-in flex justify-end pt-5 pr-5 desk:hidden">
               <Hamburger
                 tone="light"
                 onClick={() => setMenuOpen(true)}
@@ -156,10 +156,10 @@ export function SiteHeader({ variant = "hero", centerLogo = false }: SiteHeaderP
             </div>
             <div className="pb-10 desk:py-10">
               <div className="mx-auto flex max-w-[1140px] flex-wrap justify-center">
-                <div className="hidden desk:block">
+                <div className="hero-nav-in hidden desk:block">
                   <MainNav tone="light" />
                 </div>
-                <div className="mt-[5px] ml-[10px] hidden desk:block">
+                <div className="hero-nav-in hero-nav-in--late mt-[5px] ml-[10px] hidden desk:block">
                   <ContactButton tone="light" />
                 </div>
                 <div
@@ -168,7 +168,7 @@ export function SiteHeader({ variant = "hero", centerLogo = false }: SiteHeaderP
                     centerLogo ? "absolute inset-0 flex items-center justify-center px-5" : "desk:mt-6",
                   )}
                 >
-                  <Link href="/" className="inline-block" {...editImage("brand.logoHero")}>
+                  <Link href="/" className="hero-logo-in inline-block" {...editImage("brand.logoHero")}>
                     <Image
                       src={brand.logoHero}
                       alt="Berlim Estúdio"

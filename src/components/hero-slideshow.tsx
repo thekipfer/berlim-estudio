@@ -79,22 +79,24 @@ export function HeroSlideshow() {
 
   return (
     <section className="relative h-screen w-full overflow-hidden bg-black" aria-label="Fotos em destaque">
+      {/* Entrance: the photos settle from a slight zoom while a dark veil lifts (globals.css → hero intro). */}
       <SlideLayer
         slides={desktop}
         preloadFirst={!hasMobile}
-        className={hasMobile ? "hidden tab:block" : undefined}
+        className={cn("hero-zoom", hasMobile && "hidden tab:block")}
         marker={editPhotos("home.slides", hasMobile ? "Editar slides (desktop)" : "Editar slides")}
       />
       {hasMobile && (
         <SlideLayer
           slides={mobile}
           preloadFirst={false}
-          className="tab:hidden"
+          className="hero-zoom tab:hidden"
           marker={editPhotos("home.slidesMobile", "Editar slides (celular)")}
         />
       )}
       {/* Elementor background overlay: #000 at 20% */}
       <div className="pointer-events-none absolute inset-0 z-[3] bg-black opacity-20" />
+      <div aria-hidden="true" className="hero-veil pointer-events-none absolute inset-0 z-[3] bg-black" />
     </section>
   );
 }

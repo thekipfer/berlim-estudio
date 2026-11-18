@@ -297,3 +297,72 @@
 .header-reveal {
   animation: header-reveal 0.2s linear;
 }
+
+/*
+ * Home hero intro (runs once when the page opens).
+ * The logo is the page's largest element: it moves and unblurs but never fades,
+ * so the browser still records it for LCP (an opacity fade would hide it from the metric).
+ */
+@keyframes hero-zoom {
+  from {
+    transform: scale(1.08);
+  }
+  to {
+    transform: none;
+  }
+}
+@keyframes hero-veil {
+  from {
+    opacity: 0.55;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@keyframes hero-logo-in {
+  from {
+    transform: translateY(28px) scale(0.96);
+    filter: blur(10px);
+  }
+  to {
+    transform: none;
+    filter: none;
+  }
+}
+@keyframes hero-nav-in {
+  from {
+    opacity: 0;
+    transform: translateY(-14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.hero-zoom {
+  animation: hero-zoom 2.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.hero-veil {
+  animation: hero-veil 1.6s ease-out both;
+}
+.hero-logo-in {
+  animation: hero-logo-in 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.25s both;
+}
+.hero-nav-in {
+  animation: hero-nav-in 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.7s both;
+}
+.hero-nav-in--late {
+  animation-delay: 0.85s;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-zoom,
+  .hero-logo-in,
+  .hero-nav-in {
+    animation: none;
+  }
+  .hero-veil {
+    animation: none;
+    opacity: 0;
+  }
+}
+
