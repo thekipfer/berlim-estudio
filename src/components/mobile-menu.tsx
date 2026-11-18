@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect } from "react";
 import { useContent } from "@/components/content-provider";
@@ -63,6 +64,18 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
             </li>
           ))}
         </ul>
+        {/* Same label and link as the header's contact button */}
+        <Link
+          href={nav.contact.href}
+          onClick={onClose}
+          tabIndex={open ? 0 : -1}
+          className="inline-flex items-center gap-2 rounded-[50px] bg-white px-[25px] py-[15px] font-heading text-base leading-4 font-semibold text-black transition-opacity hover:opacity-85"
+        >
+          {nav.contact.label}
+          <svg viewBox="0 0 16 16" className="size-[14px]" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <path d="M3 8h10M9 4l4 4-4 4" />
+          </svg>
+        </Link>
       </div>
     </>
   );
