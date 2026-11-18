@@ -119,7 +119,7 @@
     },
     "worksTitle": "nosso portfólio",
     "works": [
-      "convencao-lunelli",
+      "hangar-33",
       "metodo-rocha",
       "harmonizapro",
       "convencao-lezalez"
@@ -587,11 +587,11 @@
       "id": "pmwmlic4dzu12e"
     },
     {
-      "slug": "convencao-lunelli",
-      "title": "Convenção Lunelli",
+      "slug": "hangar-33",
+      "title": "Hangar 33",
       "category": "evento",
-      "image": "/uploads/mwdt3txb-suager.webp",
-      "hero": "/uploads/mwmli6ux-h6xmtd.webp",
+      "image": "/uploads/mwmo5qeh-lbiabv.webp",
+      "hero": "/uploads/mwmo5t1f-ke4xe7.webp",
       "tags": [
         "portrait",
         "wedding"
@@ -599,23 +599,115 @@
       "related": [
         "harmonizapro"
       ],
-      "gallery": [],
-      "oldSlugs": [
-        "roaming-the-worlds-pathways"
+      "gallery": [
+        {
+          "src": "/uploads/mwmo5xos-zss4ub.webp",
+          "width": 2400,
+          "height": 1600
+        },
+        {
+          "src": "/uploads/mwmo5y1q-l3b13f.webp",
+          "width": 1600,
+          "height": 2400
+        },
+        {
+          "src": "/uploads/mwmo5ye1-jt8zk3.webp",
+          "width": 2400,
+          "height": 1600
+        },
+        {
+          "src": "/uploads/mwmo5yph-lmutkr.webp",
+          "width": 2400,
+          "height": 1600
+        },
+        {
+          "src": "/uploads/mwmo5z2v-jxapta.webp",
+          "width": 1600,
+          "height": 2400
+        },
+        {
+          "src": "/uploads/mwmo5zfz-bhxi3w.webp",
+          "width": 1600,
+          "height": 2400
+        },
+        {
+          "src": "/uploads/mwmo5ztm-4tybnx.webp",
+          "width": 2400,
+          "height": 1600
+        },
+        {
+          "src": "/uploads/mwmo6066-ouyad5.webp",
+          "width": 2400,
+          "height": 1600
+        },
+        {
+          "src": "/uploads/mwmo60j8-i2p15j.webp",
+          "width": 2400,
+          "height": 1600
+        },
+        {
+          "src": "/uploads/mwmo60v1-o4lb60.webp",
+          "width": 2400,
+          "height": 1600
+        },
+        {
+          "src": "/uploads/mwmo6176-ufluo4.webp",
+          "width": 2400,
+          "height": 1600
+        },
+        {
+          "src": "/uploads/mwmo61i5-znf4x8.webp",
+          "width": 2400,
+          "height": 1600
+        },
+        {
+          "src": "/uploads/mwmo61vv-qvarnd.webp",
+          "width": 2400,
+          "height": 1600
+        },
+        {
+          "src": "/uploads/mwmo627d-7rktcx.webp",
+          "width": 2400,
+          "height": 1600
+        },
+        {
+          "src": "/uploads/mwmo62kz-0bejz7.webp",
+          "width": 1600,
+          "height": 2400
+        },
+        {
+          "src": "/uploads/mwmo62w8-atrmff.webp",
+          "width": 2400,
+          "height": 1600
+        },
+        {
+          "src": "/uploads/mwmo637h-jnk6td.webp",
+          "width": 2400,
+          "height": 1600
+        },
+        {
+          "src": "/uploads/mwmo63ih-pjc13t.webp",
+          "width": 1600,
+          "height": 2400
+        }
       ],
-      "intro": "A BERLIM ESTÚDIO registrou os principais momentos, palestras e experiências do evento Convenção Lunelli.",
+      "oldSlugs": [
+        "roaming-the-worlds-pathways",
+        "convencao-lunelli"
+      ],
+      "intro": "A BERLIM ESTÚDIO registrou os principais momentos, palestras e experiências do evento da Hangar 33.",
       "meta": [
         {
           "label": "Cliente",
-          "value": "Ana Paula Pujol"
+          "value": "Hangar 33"
         },
         {
           "label": "Local",
-          "value": "Hotel Sibara Spa & Convenções"
+          "value": "Joinville - SC"
         },
         {
           "label": "Data",
-          "value": "Agosto 2026"
+          "value": "Fevereiro 2026"
         }
       ],
       "id": "pmwmlic4dgnakp"
