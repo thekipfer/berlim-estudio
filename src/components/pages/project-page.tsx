@@ -49,18 +49,19 @@ export async function ProjectPage({ slug }: { slug: string }) {
         </section>
 
         {/* Intro + Client / Where / When */}
-        <section className="py-[60px] desk:py-[100px]">
-          <div className="mx-auto max-w-[1140px] px-5 desk:px-0">
-            <h2 className="text-center font-heading text-[26px] leading-[1.4] tab:text-[30px] tab:leading-[1.3] desk:text-left desk:text-[36px]" {...edit(`${path}.intro`)}>
+        {/* Phone: smaller left-aligned intro and a ruled list; tablet/desktop: centered intro and three columns. */}
+        <section className="pt-12 pb-10 tab:py-[60px] desk:py-[100px]">
+          <div className="mx-auto max-w-[1140px] px-6 tab:px-5 desk:px-0">
+            <h2 className="text-left font-heading text-[22px] leading-[1.45] tracking-[-0.2px] text-balance tab:text-center tab:text-[30px] tab:leading-[1.3] tab:tracking-normal desk:text-left desk:text-[36px]" {...edit(`${path}.intro`)}>
               {project.intro ?? projectPage.intro}
             </h2>
-            <dl className="mt-10 grid grid-cols-1 gap-y-5 text-center tab:mt-[60px] tab:grid-cols-3 desk:text-left">
+            <dl className="mt-8 divide-y divide-black/10 border-y border-black/10 text-left tab:mt-[60px] tab:grid tab:grid-cols-3 tab:gap-x-5 tab:divide-y-0 tab:border-0 tab:text-center desk:text-left">
               {(project.meta ?? projectPage.meta).map((item, i) => (
-                <div key={i}>
-                  <dt className="font-heading text-[18px] leading-none font-semibold text-[#818181] uppercase" {...edit(`${path}.meta.${i}.label`)}>
+                <div key={i} className="py-4 tab:py-0">
+                  <dt className="font-heading text-[12px] leading-none font-semibold tracking-[0.12em] text-[#818181] uppercase tab:text-[18px] tab:tracking-normal" {...edit(`${path}.meta.${i}.label`)}>
                     {item.label}
                   </dt>
-                  <dd className="mt-[10px] text-[18px] leading-none text-black" {...edit(`${path}.meta.${i}.value`)}>
+                  <dd className="mt-2 text-[17px] leading-[1.4] text-black tab:mt-[10px] tab:text-[18px] tab:leading-[1.3]" {...edit(`${path}.meta.${i}.value`)}>
                     {item.value}
                   </dd>
                 </div>
